@@ -23,7 +23,8 @@ namespace sep2019
             //Implicit wait
             Thread.Sleep(5000);
 
-            Async.WaitForWebElement(driver);
+            //Explicit wait
+            Async.WaitForWebElementVisiblity(drv, "//a[@href='#'][contains(.,'Administration')]", 3, "XPath");
 
             IWebElement AdminLink = drv.FindElement(By.XPath("//a[@href='#'][contains(.,'Administration')]"));
             AdminLink.Click();

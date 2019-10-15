@@ -23,11 +23,15 @@ namespace sep2019
         
         internal void LoginSuccess()
         {
+            // Populate/ create collection during runtime
+            ExcelUtility.PopulateInCollection(@"S:\sep2019-master\sep2019-master\sep2019\TestData\TM_TestData.xls", "LoginPage");
+
+
             //type the user name as hari
-            username.SendKeys("hari");
+            username.SendKeys(ExcelUtility.ReadData(2, "Username"));
 
             // identify and type the password as 123123
-            password.SendKeys("123123");
+            password.SendKeys(ExcelUtility.ReadData(2, "Password"));
 
             Async.WaitForWebElementClickable(driver, "//input[@value='Log in']", 1, "XPath");
 
