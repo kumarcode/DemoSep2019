@@ -6,14 +6,14 @@ namespace sep2019
 {
     internal class TimeMaterialCreatePage
     {
-        private IWebDriver driver;
+        //private IWebDriver driver;
 
-        public TimeMaterialCreatePage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        //public TimeMaterialCreatePage(IWebDriver driver)
+        //{
+        //    this.driver = driver;
+        //}
 
-        internal void FillInValidDetails()
+        internal void FillInValidDetails(IWebDriver driver)
         {
             driver.FindElement(By.XPath("//input[@id='Code']")).SendKeys("qwerty");
             driver.FindElement(By.XPath("//input[@id='Description']")).SendKeys("asdfghgf");
@@ -21,7 +21,7 @@ namespace sep2019
 
         }
 
-        internal void ClickSave()
+        internal void ClickSave(IWebDriver driver)
         {
             Async.WaitForWebElementVisiblity(driver, "//input[@id='SaveButton']", 5, "XPath");
             driver.FindElement(By.XPath("//input[@id='SaveButton']")).Click();

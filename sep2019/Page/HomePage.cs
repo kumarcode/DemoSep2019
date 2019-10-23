@@ -11,28 +11,28 @@ namespace sep2019
 {
     class HomePage
     {
-        private IWebDriver drv;
-        public HomePage(IWebDriver driver )
-        {
-            this.drv = driver;
+        //private IWebDriver drv;
+        //public HomePage(IWebDriver driver )
+        //{
+        //    this.drv = driver;
 
-        }
+        //}
 
-        internal void ClickAdminstration()
+        internal void ClickAdminstration(IWebDriver driver)
         {
             //Implicit wait
             Thread.Sleep(5000);
 
             //Explicit wait
-            Async.WaitForWebElementVisiblity(drv, "//a[@href='#'][contains(.,'Administration')]", 3, "XPath");
+            Async.WaitForWebElementVisiblity(driver, "//a[@href='#'][contains(.,'Administration')]", 3, "XPath");
 
-            IWebElement AdminLink = drv.FindElement(By.XPath("//a[@href='#'][contains(.,'Administration')]"));
+            IWebElement AdminLink = driver.FindElement(By.XPath("//a[@href='#'][contains(.,'Administration')]"));
             AdminLink.Click();
         }
 
-        internal void ClickTimenMaterial()
+        internal void ClickTimenMaterial(IWebDriver driver)
         {
-            drv.FindElement(By.XPath("//a[@href='/TimeMaterial']")).Click();
+            driver.FindElement(By.XPath("//a[@href='/TimeMaterial']")).Click();
 
         }
     }

@@ -10,19 +10,21 @@ namespace sep2019
 {
     class LoginPage
     {
-        private IWebDriver driver;
+        //private IWebDriver driver;
 
-        public LoginPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        //public LoginPage(IWebDriver driver)
+        //{
+        //    this.driver = driver;
+        //}
 
-        IWebElement username => driver.FindElement(By.Id("UserName"));
-        IWebElement password => driver.FindElement(By.Id("Password"));
-        IWebElement loginBtn => driver.FindElement(By.XPath("//input[@value='Log in']"));
+
         
-        internal void LoginSuccess()
+        internal void LoginSuccess(IWebDriver driver)
         {
+            IWebElement username = driver.FindElement(By.Id("UserName"));
+            IWebElement password = driver.FindElement(By.Id("Password"));
+            IWebElement loginBtn = driver.FindElement(By.XPath("//input[@value='Log in']"));
+
             // Populate/ create collection during runtime
             ExcelUtility.PopulateInCollection(@"S:\sep2019-master\sep2019-master\sep2019\TestData\TM_TestData.xls", "LoginPage");
 
@@ -38,15 +40,15 @@ namespace sep2019
             //click on login button 
             loginBtn.Click();
         }
-        internal void LoginFailure()
-        {
+        //internal void LoginFailure()
+        //{
 
-            //type the user name as hari
-            username.SendKeys("34234");
-            password.SendKeys("324234");
-            loginBtn.Click();
+        //    //type the user name as hari
+        //    username.SendKeys("34234");
+        //    password.SendKeys("324234");
+        //    loginBtn.Click();
 
-            //verfying that login is failed
-        }
+        //    //verfying that login is failed
+        //}
     }
 }
